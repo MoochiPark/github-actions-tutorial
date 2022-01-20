@@ -1,0 +1,17 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 ${{ github.event_name }} 이벤트에 의해 Job이 자동으로 트리거되었습니다!"
+      - run: echo "🐧 이 작업은 GitHub에서 호스팅하는 ${{ runner.os }} 서버에서 실행되고 있습니다!"
+      - run: echo "🔎 브랜치 이름은 ${{ github.ref }}이고, 리포지토리는 ${{ github.repository }}입니다."
+      - name: 리포지토리 코드 확인
+        uses: actions/checkout@v2
+      - run: echo "💡 ${{ github.repository }} 리포지토리가 Runner에 의해 Clone되었습니다."
+      - run: echo "🖥️ Workflow가 Runner에서 코드를 테스트할 준비가 되었습니다!"
+      - name: 리포지토리 내의 파일 목록
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 이 작업의 상태 ':' ${{ job.status }}."
